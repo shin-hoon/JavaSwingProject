@@ -17,5 +17,18 @@ public class MemberController {
 	public void join() {
 		
 	}
+	
+	public void logIn() {
+		
+	}
+	
+	public void searchId() {
+
+		
+
+	}
+	public void searchPwd() {
+		
+	}
 
 }

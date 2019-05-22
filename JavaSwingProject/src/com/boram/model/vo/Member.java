@@ -10,7 +10,7 @@ public class Member implements Comparable<Member>{
 	private String email;
 	private int age;
 	
-	private int grant;
+	private int grant; //±ÇÇÑ
 
 	
 	public int getmNo() {
