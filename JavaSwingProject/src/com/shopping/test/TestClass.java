@@ -3,6 +3,6 @@ package com.shopping.test;
 public class TestClass {
 	public static void main(String[] args) {
 		System.out.println("Hello Java!");
-		System.out.println("나도 수정");
+		System.out.println("수정");
 	}
 }
