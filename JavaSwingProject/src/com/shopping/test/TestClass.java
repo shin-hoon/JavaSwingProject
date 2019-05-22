@@ -5,5 +5,9 @@ public class TestClass {
 		System.out.println("Hello Java!");
 		System.out.println("¼öÁ¤");
 		System.out.println("test");
+	
+		
+		
+	
 	}
 }
