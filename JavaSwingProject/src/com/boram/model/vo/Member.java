@@ -25,14 +25,13 @@ public class Member implements Comparable<Member>{
 		super();
 	}
 
-	public Member(String id, String pwd, String phone, String address, String email, int age, int grant) {
+	public Member(String id, String pwd, String phone, String address, String email, int age) {
 		this.id = id;
 		this.pwd = pwd;
 		this.phone = phone;
 		this.address = address;
 		this.email = email;
 		this.age = age;
-		this.grant = grant;
 	}
 	
 
