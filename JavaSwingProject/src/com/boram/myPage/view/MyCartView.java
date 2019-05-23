@@ -165,7 +165,7 @@ public class MyCartView {
 	}
 
 	public void addCart() {
-
+		//mc.addCart(product);
 	}
 
 	public void loadCart() {

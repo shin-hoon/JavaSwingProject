@@ -1,10 +1,7 @@
 package com.boram.myPage.controller;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
+import java.io.*;
+import java.util.*;
 
 import com.boram.manager.vo.Product;
 
@@ -118,6 +115,27 @@ public class MyCart extends Product {
 			}
 		}
 		return result;
+	}
+	@SuppressWarnings("unchecked")
+	public void loadCart() {//잘 작동하는지 확인할것.
+		int result=0;//임시변수확인!!
+		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(result+"MyCart.txt"))) {
+			while(true) {
+				PList=(ArrayList<Product>)ois.readObject();
+				result =1;
+		}
+			
+		}catch (EOFException e){
+			//e.printStackTrace();
+			System.out.println("불러오기 완료.");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	
 	}
 
 }
