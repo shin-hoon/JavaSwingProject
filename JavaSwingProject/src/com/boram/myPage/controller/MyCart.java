@@ -27,7 +27,7 @@ public class MyCart extends Product{
 		return PList;
 	}
 	/**
-	 * 삭제품목번호 받아서 삭제.
+	 * 삭제품목번호 받아서 삭제..
 	 * @param delete 삭제할 품목번호
 	 * @return 삭제성공1/실패0
 	 */
