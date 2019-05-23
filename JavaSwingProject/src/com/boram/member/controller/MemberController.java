@@ -16,16 +16,27 @@ public class MemberController {
 	private ArrayList<Order> orderList = new ArrayList<>();
 	
 	
-	public void join() {
+	public void join(String name, int age, String id, String pwd, String phone, String address, String email) {
 		
+		memberList.add(new Member(name, age, id, pwd, phone, address, email));
 	}
 	
 	public void logIn() {
 		
 	}
 	
-	public void searchId() {
-
+	public ArrayList<Member> searchId(String email) {
+		
+		ArrayList<Member> searchId = new ArrayList<>();
+		
+		for(int i = 0; i<memberList.size(); i++) {
+		
+		if(memberList.get(i).getEmail().equals(email)) {
+			searchId.add(memberList.get(0));
+		}
+		}
+		
+		return searchId;
 		
 
 	}

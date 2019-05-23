@@ -1,18 +1,33 @@
 package com.boram.member.model.vo;
 
-public class Member implements Comparable<Member>{
+public class Member {
 	
-	private int mNo;
+	private int mNo; // 회원번호
+	private String name;
+	private int birth;
 	private String id;
 	private String pwd;
 	private String phone;
 	private String address;
 	private String email;
-	private int age;
 	
-	private int grant; //권한
+	private int grant; // 권한
 
-	
+	public Member() {
+		super();
+	}
+
+	public Member(String name, int age, String id, String pwd, String phone, String address, String email) {
+		super();
+		this.name = name;
+		this.birth = birth;
+		this.id = id;
+		this.pwd = pwd;
+		this.phone = phone;
+		this.address = address;
+		this.email = email;
+	}
+
 	public int getmNo() {
 		return mNo;
 	}
@@ -21,20 +36,21 @@ public class Member implements Comparable<Member>{
 		this.mNo = mNo;
 	}
 
-	public Member() {
-		super();
+	public String getName() {
+		return name;
 	}
 
-	public Member(String id, String pwd, String phone, String address, String email, int age, int grant) {
-		this.id = id;
-		this.pwd = pwd;
-		this.phone = phone;
-		this.address = address;
-		this.email = email;
-		this.age = age;
-		this.grant = grant;
+	public void setName(String name) {
+		this.name = name;
 	}
-	
+
+	public int getAge() {
+		return birth;
+	}
+
+	public void setAge(int birth) {
+		this.birth = birth;
+	}
 
 	public String getId() {
 		return id;
@@ -76,14 +92,6 @@ public class Member implements Comparable<Member>{
 		this.email = email;
 	}
 
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
 	public int getGrant() {
 		return grant;
 	}
@@ -94,8 +102,8 @@ public class Member implements Comparable<Member>{
 
 	@Override
 	public String toString() {
-		return "Member [mNo=" + mNo + ", id=" + id + ", pwd=" + pwd + ", phone=" + phone + ", address=" + address
-				+ ", email=" + email + ", age=" + age + ", grant=" + grant + "]";
+		return "Member [mNo=" + mNo + ", name=" + name + ", birth=" + birth + ", id=" + id + ", pwd=" + pwd + ", phone="
+				+ phone + ", address=" + address + ", email=" + email + ", grant=" + grant + "]";
 	}
 
 	@Override
@@ -103,11 +111,12 @@ public class Member implements Comparable<Member>{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
-		result = prime * result + age;
+		result = prime * result + birth;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + grant;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + mNo;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
 		result = prime * result + ((pwd == null) ? 0 : pwd.hashCode());
 		return result;
@@ -127,7 +136,7 @@ public class Member implements Comparable<Member>{
 				return false;
 		} else if (!address.equals(other.address))
 			return false;
-		if (age != other.age)
+		if (birth != other.birth)
 			return false;
 		if (email == null) {
 			if (other.email != null)
@@ -143,6 +152,11 @@ public class Member implements Comparable<Member>{
 			return false;
 		if (mNo != other.mNo)
 			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
 		if (phone == null) {
 			if (other.phone != null)
 				return false;
@@ -156,21 +170,5 @@ public class Member implements Comparable<Member>{
 		return true;
 	}
 
-	@Override
-	public int compareTo(Member o) {
-		
-		int result = -1;
-		
-		if(this.mNo > o.mNo) {
-			result = 1;
-		}
-				
-		
-		return result;
-	}
-	
-	
-	
-	
 	
 }

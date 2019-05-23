@@ -1,8 +1,10 @@
 package com.boram.member.view;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.boram.member.controller.MemberController;
+import com.boram.member.model.vo.Member;
 
 public class MemberView {
 	
@@ -23,8 +25,8 @@ public class MemberView {
 		System.out.println("이름 : ");
 		String name = sc.nextLine();
 		
-		System.out.println("나이 : ");
-		int age = sc.nextInt();
+		System.out.println("생년월일(ex : 950417) : ");
+		int birth = sc.nextInt();
 		sc.nextLine();
 		
 		System.out.println("아이디 : ");
@@ -41,6 +43,11 @@ public class MemberView {
 		
 		System.out.println("이메일 : ");
 		String email = sc.nextLine();
+		
+		mc.join(name, birth, id, pwd, phone, address, email);
+		
+		
+		System.out.println("회원가입이 완료되었습니다.");
 
 	}
 	
@@ -50,10 +57,38 @@ public class MemberView {
 	
 	public void searchId() {
 		
+		System.out.println("===== 아이디 찾기 =====");
+		
+		System.out.println("이름 : ");
+		String name = sc.nextLine();
+		
+		System.out.println("이메일 : ");
+		String email = sc.nextLine();
+		
+		ArrayList<Member> searchId = mc.searchId(email);
+		
+		if (searchId.isEmpty()) {
+			System.out.println("아이디를 찾을 수 없습니다.");
+
+		} else {
+
+			for (Member m : searchId) {
+				System.out.println(m);
+			}
+		}
+		
 
 	}
 	
 	public void searchPwd() {
+		
+		System.out.println("===== 비밀번호 찾기 =====");
+		
+		System.out.println("이름 : ");
+		String name = sc.nextLine();
+		
+		System.out.println("이메일 : ");
+		String email = sc.nextLine();
 		
 
 	}
