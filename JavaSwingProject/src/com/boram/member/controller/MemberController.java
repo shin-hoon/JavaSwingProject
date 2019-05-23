@@ -1,10 +1,12 @@
-package com.boram.controller;
+package com.boram.member.controller;
 
 import java.util.ArrayList;
 
-import com.boram.model.vo.Member;
+import com.boram.member.model.vo.Member;
 import com.boram.model.vo.Order;
 import com.boram.model.vo.Product;
+
+
 
 public class MemberController {
 	

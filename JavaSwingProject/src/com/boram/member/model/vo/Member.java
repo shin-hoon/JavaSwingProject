@@ -1,4 +1,4 @@
-package com.boram.model.vo;
+package com.boram.member.model.vo;
 
 public class Member implements Comparable<Member>{
 	

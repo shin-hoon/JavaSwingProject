@@ -1,4 +1,4 @@
-package com.boram.view;
+package com.boram.member.view;
 
 public class MemberView {
 	
