@@ -1,5 +1,6 @@
 package com.boram.myPage.view;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MyCartView {
@@ -18,14 +19,14 @@ public class MyCartView {
 			System.out.println("4. 장바구니 주문하기");
 			System.out.println("0. 이전메뉴로");
 			System.out.print("입력  : ");
-			// try {
-			// inp = sc.nextInt();
-			// sc.nextLine();
-			// }catch(InputMismatchException e) {
-			// System.out.println("잘못된 값입니다. 다시 입력해주세요.");
-			// }
-			inp = sc.nextInt();
-			sc.nextLine();
+			 try {
+			 inp = sc.nextInt();
+			 sc.nextLine();
+			 }catch(InputMismatchException e) {
+			 System.out.println("잘못된 값입니다. 다시 입력해주세요.");
+			 }
+//			inp = sc.nextInt();
+//			sc.nextLine();
 			switch (inp) {
 			case 1:
 				break;

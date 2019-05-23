@@ -24,15 +24,19 @@ public class MyPageView {
 			System.out.println("6. 나이 수정");
 			System.out.println("0. 이전메뉴로");
 			System.out.print("입력 : ");
-			try {
-				inp = sc.nextInt();
-				sc.nextLine();
-			} catch (InputMismatchException e) {
-				System.out.println("잘못된 값입니다. 다시 입력해주세요.");
-				continue;
-			} finally {
-				// inp = sc.nextInt();
-				// sc.nextLine();
+			while (true) {
+//				 inp = sc.nextInt();
+//				 sc.nextLine();
+				try {
+					inp = sc.nextInt();
+					sc.nextLine();
+
+				} catch (InputMismatchException e) {
+					System.out.println("잘못된 값입니다. 다시 입력해주세요.");
+					sc.nextLine();
+					break;
+				}
+
 				switch (inp) {
 				case 1:
 					idChange();
@@ -60,6 +64,8 @@ public class MyPageView {
 					break;
 				}
 			}
+		
+
 		}
 	}
 
@@ -151,5 +157,4 @@ public class MyPageView {
 			System.out.println("나이 변경에 성공하였습니다.");
 		}
 	}
-
 }
