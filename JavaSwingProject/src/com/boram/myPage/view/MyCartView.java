@@ -23,6 +23,7 @@ public class MyCartView {
 			System.out.println("3. 장바구니 전체 삭제");
 			System.out.println("4. 장바구니 주문하기");
 			System.out.println("5. 장바구니 저장하기");
+			System.out.println("6. 장바구니 불러오기");
 			System.out.println("0. 이전메뉴로");
 			System.out.print("입력  : ");
 			try {
@@ -49,6 +50,8 @@ public class MyCartView {
 			case 5:
 				saveCart();
 				break;
+			case 6:
+				loadCart();
 			case 0:
 				break;
 			default:
@@ -56,7 +59,11 @@ public class MyCartView {
 			}
 		}
 	}
-
+	/**
+	 * 장바구니 전체출력
+	 * 비어있지않으면
+	 * 상품명, 카테고리, 사이즈, 가격 출력
+	 */
 	public void cartPrint() {
 		ArrayList<Product> p = mc.cartPrint();
 		if (p.isEmpty()) {
@@ -65,8 +72,8 @@ public class MyCartView {
 			for (Product i : p) {
 				System.out.print(i.getpNo());
 				System.out.print(i.getCategory());
-				System.out.print(i.getPrice());
 				System.out.print(i.getSize());
+				System.out.print(i.getPrice());
 				System.out.println();
 
 			}
@@ -74,11 +81,14 @@ public class MyCartView {
 
 	}
 
+	/**
+	 * 삭제성공1/실패 0
+	 */
 	public void cartDelete() {
 		System.out.println("삭제할 품목번호를 입력하세요.");
 		int delete = sc.nextInt();
 		sc.nextLine();
-		int result = mc.deleteCart(delete);
+		int result = mc.cartDelete(delete);
 		if (result == 0) {
 			System.out.println("삭제실패");
 		} else {
@@ -109,15 +119,56 @@ public class MyCartView {
 		}
 	}
 
+	/**
+	 * 테스트완료후 다시손볼것!! 주문파일생성실패(주문실패) =0
+	 *  주문파일 생성완료 되었으나 장바구니 파일 또는 리스트 삭제되지않음 1
+	 *  주문파일생성완료후 장바구니파일 및 장바구니리스트 삭제완료 =2 (완전성공) 
+	 */
 	public void cartOrder() {
-
+		int result = mc.cartOrder();
+		switch (result) {
+		case 1:System.out.println("주문파일만생성완료.");
+		System.out.println("파일 또는 리스트 삭제실패");
+			break;
+		case 2:System.out.println("주문성공 및 장바구니파일,리스트삭제 성공!");
+			break;
+		case 0:System.out.println("주문파일 생성실패, 장바구니파일및 리스트 삭제하지않음.");
+			break;
+		default:
+			System.out.println("????");
+			break;
+		}
 	}
 
 	public void saveCart() {
-
+		System.out.println("장바구니를 저장하시겠습니까?");
+		System.out.println("현재 장바구니목록으로 덮어씌워집니다.");
+		System.out.print("입력(Y/N) : ");
+		char inp = sc.nextLine().charAt(0);
+		switch(inp) {
+		case 'y':
+		case 'Y':int result=mc.saveCart();
+		if(result==0) {
+			System.out.println("저장실패");
+		}else {
+			System.out.println("저장성공");
+		}
+			return;
+		case 'n':
+		case 'N':System.out.println("이전메뉴로");
+			return;
+		default:
+			System.out.println("잘못입력하셨습니다.");
+			System.out.println("이전메뉴로.");
+			return;
+		}
 	}
 
 	public void addCart() {
+
+	}
+
+	public void loadCart() {
 
 	}
 }
