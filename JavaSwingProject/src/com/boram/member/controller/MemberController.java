@@ -2,9 +2,9 @@ package com.boram.member.controller;
 
 import java.util.ArrayList;
 
+import com.boram.manager.vo.Order;
+import com.boram.manager.vo.Product;
 import com.boram.member.model.vo.Member;
-import com.boram.model.vo.Order;
-import com.boram.model.vo.Product;
 
 
 

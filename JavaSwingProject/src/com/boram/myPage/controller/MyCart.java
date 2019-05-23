@@ -2,7 +2,7 @@ package com.boram.myPage.controller;
 
 import java.util.ArrayList;
 
-import com.boram.model.vo.Product;
+import com.boram.manager.vo.Product;
 
 public class MyCart {
 	 ArrayList<Product> cartList= new ArrayList<>();

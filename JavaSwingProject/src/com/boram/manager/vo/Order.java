@@ -1,4 +1,4 @@
-package com.boram.model.vo;
+package com.boram.manager.vo;
 
 public class Order {
 	
