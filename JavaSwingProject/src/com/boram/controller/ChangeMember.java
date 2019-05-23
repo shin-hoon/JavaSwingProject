@@ -1,4 +1,4 @@
-package com.shopping.myPage;
+package com.boram.controller;
 
 public class ChangeMember {
 	//private ArrayList<Member> MemberList = new ArrayList<>();
