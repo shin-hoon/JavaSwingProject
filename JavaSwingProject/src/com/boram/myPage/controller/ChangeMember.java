@@ -12,7 +12,7 @@ public class ChangeMember {
 	}
 
 	/**
-	 * 변경. 이하동일.
+	 * 변경. 이하동일..
 	 * 
 	 * @param mNo 멤버번호 -> 본인것만 변경할수 있도록 수정해야함.
 	 * @param new* 바꿀항목
