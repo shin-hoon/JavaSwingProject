@@ -12,8 +12,6 @@ public class MemberController {
 	
 	
 	private ArrayList<Member> memberList = new ArrayList<>();
-	private ArrayList<Product> productList = new ArrayList<>();
-	private ArrayList<Order> orderList = new ArrayList<>();
 	
 	
 	public void join(String name, int age, String id, String pwd, String phone, String address, String email) {
@@ -40,7 +38,18 @@ public class MemberController {
 		
 
 	}
-	public void searchPwd() {
+	public ArrayList<Member> searchPwd(String email) {
+		
+		ArrayList<Member> searchPwd = new ArrayList<>();
+		
+		for(int i = 0; i<memberList.size(); i++) {
+		
+		if(memberList.get(i).getEmail().equals(email)) {
+			searchPwd.add(memberList.get(0));
+		}
+		}
+		
+		return searchPwd;
 		
 	}
 
