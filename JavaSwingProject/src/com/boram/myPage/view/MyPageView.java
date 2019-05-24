@@ -1,8 +1,8 @@
 package com.boram.myPage.view;
 
-import java.util.*;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
-import com.boram.model.vo.Member;
 import com.boram.myPage.controller.ChangeMember;
 
 public class MyPageView {

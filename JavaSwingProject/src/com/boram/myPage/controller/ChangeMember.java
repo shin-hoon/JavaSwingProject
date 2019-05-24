@@ -2,7 +2,7 @@ package com.boram.myPage.controller;
 
 import java.util.ArrayList;
 
-import com.boram.model.vo.Member;
+import com.boram.member.vo.Member;
 
 public class ChangeMember {
 	private ArrayList<Member> MemberList = new ArrayList<>();

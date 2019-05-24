@@ -10,16 +10,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class MainPage{
+public class Test extends JFrame {
 	JFrame frame;
-	public void MainPage() {
+
+	public Test() {
 		frame = new JFrame();
 		frame.setTitle("Boram닷컴");
-		frame.setBounds(600,0,1018,900);  //  600윈도우 위치 x , 윈도우 위치 y , 컨테이너 x , 컨테이너 y 418,900
-		frame.setLayout(null);
+		frame.setBounds(600,0,706,764);
 		
 		JPanel mainMenu = new JPanel();
-		mainMenu.setBounds(50,230,850,400);
+		mainMenu.setBounds(0, 12, 691, 432);
 		mainMenu.setVisible(true);
 		
 	/*	
@@ -38,15 +38,18 @@ public class MainPage{
         } catch (IOException e) {
         	System.out.println(e.getMessage());
         }
+        frame.getContentPane().setLayout(null);
         JLabel label = new JLabel(new ImageIcon(image));
+        label.setBounds(14, 5, 322, 427);
         JLabel label2 = new JLabel(new ImageIcon(image2));
+        label2.setBounds(363, 5, 322, 421);
+        mainMenu.setLayout(null);
         
         mainMenu.add(label);
         mainMenu.add(label2);
-        frame.add(mainMenu);
+        frame.getContentPane().add(mainMenu);
         frame.setVisible(true);
         frame.setResizable(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }
-

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.boram.member.controller.MemberController;
-import com.boram.member.model.vo.Member;
+import com.boram.member.vo.Member;
 
 public class MemberView {
 

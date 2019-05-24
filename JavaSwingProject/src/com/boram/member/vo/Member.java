@@ -1,4 +1,4 @@
-package com.boram.member.model.vo;
+package com.boram.member.vo;
 
 public class Member {
 	
