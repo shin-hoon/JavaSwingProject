@@ -57,26 +57,26 @@ public class MemberView {
 
 		System.out.println("=== 회원가입 ===");
 
-		System.out.println("이름 : ");
+		System.out.print("이름 : ");
 		String name = sc.nextLine();
 
-		System.out.println("생년월일(ex : 950417) : ");
+		System.out.print("생년월일(ex : 950417) : ");
 		int birth = sc.nextInt();
 		sc.nextLine();
 
-		System.out.println("아이디 : ");
+		System.out.print("아이디 : ");
 		String id = sc.nextLine();
 
-		System.out.println("비밀번호 : ");
+		System.out.print("비밀번호 : ");
 		String pwd = sc.nextLine();
 
-		System.out.println("전화번호 : ");
+		System.out.print("전화번호 : ");
 		String phone = sc.nextLine();
 
-		System.out.println("주소 : ");
+		System.out.print("주소 : ");
 		String address = sc.nextLine();
 
-		System.out.println("이메일 : ");
+		System.out.print("이메일 : ");
 		String email = sc.nextLine();
 
 		mc.join(name, birth, id, pwd, phone, address, email);
@@ -92,10 +92,10 @@ public class MemberView {
 
 		System.out.println("===== 로그인 =====");
 
-		System.out.println("ID : ");
+		System.out.print("ID : ");
 		String id = sc.nextLine();
 
-		System.out.println("PWD : ");
+		System.out.print("PWD : ");
 		String pwd = sc.nextLine();
 
 		Member logIn = mc.logIn(id, pwd);
@@ -112,10 +112,10 @@ public class MemberView {
 
 		System.out.println("===== 아이디 찾기 =====");
 
-		System.out.println("이름 : ");
+		System.out.print("이름 : ");
 		String name = sc.nextLine();
 
-		System.out.println("이메일 : ");
+		System.out.print("이메일 : ");
 		String email = sc.nextLine();
 
 		 String id =mc.searchId(name, email);
@@ -137,10 +137,10 @@ public class MemberView {
 
 		System.out.println("===== 비밀번호 찾기 =====");
 
-		System.out.println("이름 : ");
+		System.out.print("이름 : ");
 		String name = sc.nextLine();
 
-		System.out.println("이메일 : ");
+		System.out.print("이메일 : ");
 		String email = sc.nextLine();
 		
 		String pwd = mc.searchPwd(name, email);
