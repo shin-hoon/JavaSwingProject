@@ -16,7 +16,7 @@ public class MyCart extends Product implements Serializable{
 	// 장바구니리스트에 추가하는건 상품쪽에서.
 	
 	{
-		//1,1,"hat",35000,one,1,1
+		//1,1,"hat",35000,one,1,1.
 		PList.add(new Product(1,1,"hat",35001,"one1",1,1));
 		PList.add(new Product(2,2,"hat",35002,"one2",1,1));
 		PList.add(new Product(3,3,"hat",35003,"one3",1,1));
