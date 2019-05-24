@@ -4,8 +4,8 @@ import com.boram.shopping.view.Test;
 
 public class Run {
 	public static void main(String[] args) {
-//		MainPage main = new MainPage();
+//		MainPage main = new MainPage(); ¾ê°¡ ¸ŞÀÎ
 		Test test = new Test();
-//		Test2 test2 = new Test2();
+//		Test2 test2 = new Test2(); 
 	}
 }
