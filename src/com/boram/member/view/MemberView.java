@@ -1,6 +1,5 @@
 package com.boram.member.view;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.boram.member.controller.MemberController;
