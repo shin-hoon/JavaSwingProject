@@ -19,7 +19,9 @@ public class MemberController {
 		memberList.add(new Member(name, age, id, pwd, phone, address, email));
 	}
 	
-	public void logIn() {
+	public void logIn(String id, String pwd) {
+		
+		
 		
 	}
 	

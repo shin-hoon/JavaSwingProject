@@ -14,6 +14,40 @@ public class MemberView {
 
 	public void mainmenu() {
 
+		while (true) {
+			System.out.println("== 메뉴 ==");
+			System.out.println("1. 회원가입");
+			System.out.println("2. 로그인");
+			System.out.println("3. 아이디 찾기");
+			System.out.println("4. 비밀번호 찾기");
+			System.out.println("0. 종료");
+			System.out.print("메뉴선택 : ");
+			int menu = sc.nextInt();
+			sc.nextLine();
+
+			switch (menu) {
+			case 1:
+				join();
+				break;
+			case 2:
+				logIn();
+				break;
+			case 3:
+				searchId();
+				break;
+			case 4:
+				searchPwd();
+				break;
+			case 0:
+				System.out.println("종료합니다.");
+				return;
+			default:
+				System.out.println("잘못입력하였습니다.");
+				break;
+			}
+
+		}
+
 	}
 
 	public void join() {
@@ -50,6 +84,15 @@ public class MemberView {
 
 	public void logIn() {
 
+		System.out.println("===== 로그인 =====");
+
+		System.out.println("ID : ");
+		String id = sc.nextLine();
+
+		System.out.println("PWD : ");
+		String pwd = sc.nextLine();
+
+		mc.logIn(id, pwd);
 	}
 
 	public void searchId() {
