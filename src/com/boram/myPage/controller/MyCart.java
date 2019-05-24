@@ -126,7 +126,7 @@ public class MyCart extends Product implements Serializable{
 		int result = 0;
 		if (PList.isEmpty()) {
 			//System.out.println("Empty");
-			result = 2;
+			result = 1;
 		} else {//임시변수확인!!!!!!
 			try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(result + "MyCart.txt"))) {
 				for (Product i : PList) {
