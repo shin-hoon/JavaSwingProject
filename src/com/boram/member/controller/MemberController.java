@@ -21,8 +21,6 @@ public class MemberController {
 	
 	public Member logIn(String id, String pwd) {
 		
-		ArrayList<Member> logIn = new ArrayList<>();
-		
 		for(int i = 0; i<memberList.size(); i++) {
 			
 			// 저장된 아이디랑 패스워드가 입력한 아이다랑 패스워드랑 같으면
