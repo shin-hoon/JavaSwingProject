@@ -102,6 +102,8 @@ public class MemberView {
 		
 		if(logIn == null) {
 			System.out.println("찾을 수 없는 회원입니다.");
+		} else {
+			System.out.println("로그인 되었습니다.");
 		}
 	}
 
@@ -125,7 +127,7 @@ public class MemberView {
 
 		} else {
 
-			System.out.println("찾으시는 ID는 " +  id + "입니다.");
+			System.out.println("찾으시는 ID는 " +  id + " 입니다.");
 		}
 
 	}
@@ -150,7 +152,7 @@ public class MemberView {
 
 		} else {
 
-			System.out.println("찾으시는 ID는 " +  pwd + "입니다.");
+			System.out.println("찾으시는 PWD는 " +  pwd + " 입니다.");
 		}
 		
 	}
