@@ -53,7 +53,7 @@ public class MyCartView {
 			case 6:
 				loadCart();
 			case 0:
-				break;
+				return;
 			default:
 				return;
 			}
@@ -70,10 +70,11 @@ public class MyCartView {
 			System.out.println("장바구니가 비어있습니다.");
 		} else {
 			for (Product i : p) {
-				System.out.print(i.getpNo());
-				System.out.print(i.getCategory());
-				System.out.print(i.getSize());
-				System.out.print(i.getPrice());
+				System.out.print(i.getpNo()+"\t");
+				System.out.print(i.getProductName()+"\t");
+				System.out.print(i.getCategory()+"\t");
+				System.out.print(i.getSize()+"\t");
+				System.out.print(i.getPrice()+"\t");
 				System.out.println();
 
 			}
@@ -85,14 +86,15 @@ public class MyCartView {
 	 * 삭제성공1/실패 0
 	 */
 	public void cartDelete() {
-		System.out.println("삭제할 품목번호를 입력하세요.");
+		System.out.print("삭제할 품목번호를 입력하세요 : ");
 		int delete = sc.nextInt();
 		sc.nextLine();
+		
 		int result = mc.cartDelete(delete);
 		if (result == 0) {
 			System.out.println("삭제실패");
 		} else {
-			System.out.println(delete + "가 삭제되었습니다.");
+			System.out.println(delete + "번이 삭제되었습니다.");
 		}
 
 	}
@@ -150,6 +152,7 @@ public class MyCartView {
 		case 'Y':int result=mc.saveCart();
 		if(result==0) {
 			System.out.println("저장실패");
+			System.out.println(result);//실패원인리턴.//임시.
 		}else {
 			System.out.println("저장성공");
 		}
@@ -169,6 +172,7 @@ public class MyCartView {
 	}
 
 	public void loadCart() {
-
+		mc.loadCart();
+		return;
 	}
 }

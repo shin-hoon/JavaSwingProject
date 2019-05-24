@@ -12,7 +12,7 @@ public class MyPageView {
 	public MyPageView() {
 	}
 
-	public void mainMenu() {
+	public void mainMenu() {//조회용 임시메뉴 7 번 삭제할것.
 		int inp = 0;
 		while (true) {
 			System.out.println("===== 회원정보 수정 =====");
@@ -24,7 +24,7 @@ public class MyPageView {
 			System.out.println("6. 나이 수정");
 			System.out.println("0. 이전메뉴로");
 			System.out.print("입력 : ");
-			while (true) {
+			
 //				 inp = sc.nextInt();
 //				 sc.nextLine();
 				try {
@@ -56,6 +56,8 @@ public class MyPageView {
 				case 6:
 					ageChange();
 					break;
+				case 7 : printMem();//조회용 임시메뉴.
+					break;
 				case 0:
 					System.out.println("이전메뉴로 이동합니다.");
 					return;
@@ -63,7 +65,7 @@ public class MyPageView {
 					System.out.println("잘못된값입니다.\n다시입력하세요");
 					break;
 				}
-			}
+			
 		
 
 		}
@@ -156,5 +158,11 @@ public class MyPageView {
 		} else {
 			System.out.println("나이 변경에 성공하였습니다.");
 		}
+	}
+	/**
+	 * 조회용 임시메뉴.
+	 */
+	public void printMem() {
+		cm.printMem();
 	}
 }

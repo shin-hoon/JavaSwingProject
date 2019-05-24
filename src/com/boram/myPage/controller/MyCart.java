@@ -5,11 +5,32 @@ import java.util.*;
 
 import com.boram.manager.vo.Product;
 
-public class MyCart extends Product {
+public class MyCart extends Product implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4623389045564207219L;
 	ArrayList<Product> PList = new ArrayList<>();
 	// product 에서 몇개만 뽑아서 장바구니리스트 만들어야함.
 	// -> 그냥다 추가해서 몇개만뽑음.
 	// 장바구니리스트에 추가하는건 상품쪽에서.
+	
+	{
+		//1,1,"hat",35000,one,1,1
+		PList.add(new Product(1,1,"hat",35001,"one1",1,1));
+		PList.add(new Product(2,2,"hat",35002,"one2",1,1));
+		PList.add(new Product(3,3,"hat",35003,"one3",1,1));
+		PList.add(new Product(4,1,"hat",35004,"one4",1,1));
+		PList.add(new Product(5,2,"hat",35005,"one5",1,1));
+		PList.add(new Product(6,3,"hat",35006,"one6",1,1));
+		PList.add(new Product(7,4,"hat",35007,"one7",1,1));
+		
+		
+		
+		
+		
+		
+	}
 
 	public MyCart() {
 	}
@@ -39,8 +60,10 @@ public class MyCart extends Product {
 		int result = 0;
 		for (Product i : PList) {
 			if (i.getpNo() == delete) {
+				//System.out.println(i);
 				PList.remove(i);
 				result = 1;
+				return result;
 			} else {
 				result = 0;
 			}
@@ -102,16 +125,19 @@ public class MyCart extends Product {
 	public int saveCart() {
 		int result = 0;
 		if (PList.isEmpty()) {
-			result = 0;
+			//System.out.println("Empty");
+			result = 2;
 		} else {//임시변수확인!!!!!!
 			try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(result + "MyCart.txt"))) {
 				for (Product i : PList) {
 					oos.writeObject(i);
 					result=1;
+					return result;
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				result=0;
+				//e.printStackTrace();
 			}
 		}
 		return result;
