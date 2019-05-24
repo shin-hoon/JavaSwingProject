@@ -50,6 +50,9 @@ public class MemberView {
 
 	}
 
+	/**
+	 * 회원가입 하는거
+	 */
 	public void join() {
 
 		System.out.println("=== 회원가입 ===");
@@ -82,6 +85,9 @@ public class MemberView {
 
 	}
 
+	/**
+	 * 로그인 하는거
+	 */
 	public void logIn() {
 
 		System.out.println("===== 로그인 =====");
@@ -92,9 +98,16 @@ public class MemberView {
 		System.out.println("PWD : ");
 		String pwd = sc.nextLine();
 
-		mc.logIn(id, pwd);
+		Member logIn = mc.logIn(id, pwd);
+		
+		if(logIn == null) {
+			System.out.println("찾을 수 없는 회원입니다.");
+		}
 	}
 
+	/**
+	 * 아이디 찾기
+	 */
 	public void searchId() {
 
 		System.out.println("===== 아이디 찾기 =====");
@@ -105,20 +118,21 @@ public class MemberView {
 		System.out.println("이메일 : ");
 		String email = sc.nextLine();
 
-		ArrayList<Member> searchId = mc.searchId(email);
+		 String id =mc.searchId(name, email);
 
-		if (searchId.isEmpty()) {
+		if (id==null) {
 			System.out.println("아이디를 찾을 수 없습니다.");
 
 		} else {
 
-			for (Member m : searchId) {
-				System.out.println(m);
-			}
+			System.out.println("찾으시는 ID는 " +  id + "입니다.");
 		}
 
 	}
 
+	/**
+	 * 비밀번호 찾기
+	 */
 	public void searchPwd() {
 
 		System.out.println("===== 비밀번호 찾기 =====");
@@ -128,18 +142,16 @@ public class MemberView {
 
 		System.out.println("이메일 : ");
 		String email = sc.nextLine();
+		
+		String pwd = mc.searchPwd(name, email);
 
-		ArrayList<Member> searchPwd = mc.searchId(email);
-
-		if (searchPwd.isEmpty()) {
-			System.out.println("비밀번호를 찾을 수 없습니다.");
+		if (pwd==null) {
+			System.out.println("아이디를 찾을 수 없습니다.");
 
 		} else {
 
-			for (Member m : searchPwd) {
-				System.out.println(m);
-
-			}
+			System.out.println("찾으시는 ID는 " +  pwd + "입니다.");
 		}
+		
 	}
 }

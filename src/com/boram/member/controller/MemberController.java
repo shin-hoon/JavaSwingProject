@@ -19,39 +19,48 @@ public class MemberController {
 		memberList.add(new Member(name, age, id, pwd, phone, address, email));
 	}
 	
-	public void logIn(String id, String pwd) {
+	public Member logIn(String id, String pwd) {
 		
+		ArrayList<Member> logIn = new ArrayList<>();
 		
-		
+		for(int i = 0; i<memberList.size(); i++) {
+			
+			// 저장된 아이디랑 패스워드가 입력한 아이다랑 패스워드랑 같으면
+			if(memberList.get(i).getId().equals(id) && memberList.get(i).getPwd().equals(pwd)) {
+				return memberList.get(i);
+	
+		}
+	}
+		return null;
 	}
 	
-	public ArrayList<Member> searchId(String email) {
+	public String searchId(String name,String email) {
 		
-		ArrayList<Member> searchId = new ArrayList<>();
+		String id =null;
 		
 		for(int i = 0; i<memberList.size(); i++) {
 		
-		if(memberList.get(i).getEmail().equals(email)) {
-			searchId.add(memberList.get(0));
+		if(memberList.get(i).getEmail().equals(email)&&(memberList.get(i).getName().equals(name))) { // 저장된 회원 정보 이메일에 입력한 이메일이 일치하면
+			id =memberList.get(i).getId();
 		}
 		}
 		
-		return searchId;
+		return id;
 		
 
 	}
-	public ArrayList<Member> searchPwd(String email) {
+	public String searchPwd(String name, String email) {
 		
-		ArrayList<Member> searchPwd = new ArrayList<>();
-		
+		String pwd =null;
+	
 		for(int i = 0; i<memberList.size(); i++) {
 		
-		if(memberList.get(i).getEmail().equals(email)) {
-			searchPwd.add(memberList.get(0));
+		if(memberList.get(i).getEmail().equals(email)&&(memberList.get(i).getName().equals(name))) { // 저장된 회원 정보 이메일에 입력한 이메일이 일치하면
+			pwd=memberList.get(i).getPwd();
 		}
 		}
 		
-		return searchPwd;
+		return pwd;
 		
 	}
 
