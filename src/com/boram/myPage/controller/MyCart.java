@@ -24,12 +24,6 @@ public class MyCart extends Product implements Serializable{
 		PList.add(new Product(5,2,"hat",35005,"one5",1,1));
 		PList.add(new Product(6,3,"hat",35006,"one6",1,1));
 		PList.add(new Product(7,4,"hat",35007,"one7",1,1));
-		
-		
-		
-		
-		
-		
 	}
 
 	public MyCart() {
@@ -130,18 +124,19 @@ public class MyCart extends Product implements Serializable{
 		int result = 0;
 		if (PList.isEmpty()) {
 			//System.out.println("Empty");
-			result = 1;
+			result = 0;
 		} else {//임시변수확인!!!!!!
-			try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(result + "MyCart.txt"))) {
+			try (ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(result + "MyCart.txt")))) {
 //				for (Product i : PList) {
 //					oos.writeObject(i);
 //					result=1;
-//					return result;
+////					return result;
 //				}
-				for(int i=0;i<PList.size();i++) {
-					oos.writeObject(PList);
-					return 1;
-				}
+//				for(int i=0;i<PList.size();i++) {
+//					oos.writeObject(PList.get(i));
+//					//return 1;
+//				}
+				oos.writeObject(PList);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				//result=0;

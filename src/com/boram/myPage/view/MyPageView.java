@@ -18,10 +18,10 @@ public class MyPageView {
 			System.out.println("===== 회원정보 수정 =====");
 			System.out.println("1. ID 수정 ");
 			System.out.println("2. PW 수정");
-			System.out.println("3. Phone 수정");
+			System.out.println("3. 나이 수정");
 			System.out.println("4. 주소 수정");
 			System.out.println("5. 이메일 수정");
-			System.out.println("6. 나이 수정");
+			System.out.println("6. Phone 수정");
 			System.out.println("0. 이전메뉴로");
 			System.out.print("입력 : ");
 			
@@ -45,7 +45,7 @@ public class MyPageView {
 					pwChange();
 					break;
 				case 3:
-					phoneChange();
+					ageChange();
 					break;
 				case 4:
 					addressChange();
@@ -54,7 +54,7 @@ public class MyPageView {
 					emailChange();
 					break;
 				case 6:
-					ageChange();
+					phoneChange();
 					break;
 				case 7 : printMem();//조회용 임시메뉴.
 					break;
