@@ -92,9 +92,13 @@ public class MyCart extends Product implements Serializable{
 			result = 0;
 		} else {//임시변수!
 			try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(result + "MyOrder.txt"))) {
-				for (Product i : PList) {
-					oos.writeObject(i);
-					result=1;
+//				for (Product i : PList) {
+//					oos.writeObject(i);
+//					result=1;
+//				}
+				for(int i=0;i<PList.size();i++) {
+					oos.writeObject(PList);
+					return 1;
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -122,22 +126,26 @@ public class MyCart extends Product implements Serializable{
 	 * 장바구니 비어있거나 파일생성실패시 0
 	 * 성공시 1
 	 */
-	public int saveCart() {
+	public int saveCart() {//notSerializable exc
 		int result = 0;
 		if (PList.isEmpty()) {
 			//System.out.println("Empty");
 			result = 1;
 		} else {//임시변수확인!!!!!!
 			try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(result + "MyCart.txt"))) {
-				for (Product i : PList) {
-					oos.writeObject(i);
-					result=1;
-					return result;
+//				for (Product i : PList) {
+//					oos.writeObject(i);
+//					result=1;
+//					return result;
+//				}
+				for(int i=0;i<PList.size();i++) {
+					oos.writeObject(PList);
+					return 1;
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				result=0;
-				//e.printStackTrace();
+				//result=0;
+				e.printStackTrace();
 			}
 		}
 		return result;
