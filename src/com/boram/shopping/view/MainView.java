@@ -1,29 +1,65 @@
 package com.boram.shopping.view;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import javax.swing.*;
-import javax.swing.border.*;
-import java.io.*;
-import java.net.*;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
+
+import com.boram.myPage.view.WB_MyPageView;
+import com.boram.shopping.vo.SubMenuEventVO;
 
 public class MainView{
 	public static JFrame frame;
 	boolean outerChk = false;
 	boolean topChk = false;
+/*   
+  	 setLocation    menu    menuChk     subMenu
+	    x   y      label[]  boolean[]   panel[] 
+	    0 , 0		outer    false      outerSubMenu
+	   124,250       top     true       topSubMenu
+	   174,336	    shirt    false      shirtSubMenu
+	   	0 , 0	    pants    false      pantsSubMenu
+	   	0 , 0	    shoes    false      shoesSubMenu
+	   	0 , 0	     acc     false      accSubMenu
+*/
+	
+	// 메뉴 
+	JLabel outer, top, shirt, pants, shoes, acc;
+	JPanel outerSubMenu, topSubMenu, shirtSubMenu, pantsSubMenu, shoesSubMenu, accSubMenu;
+	
+	// 마우스 이벤트용 배열
+	JLabel[] menu = {outer, top, shirt, pants, shoes, acc};
+	JPanel[] subMenu = {outerSubMenu, topSubMenu, shirtSubMenu, pantsSubMenu, shoesSubMenu, accSubMenu};
+	boolean[] menuChk = {false, false, false, false, false, false};
+	int[] x = {0, 124, 174, 0, 0, 0};
+	int[] y = {0, 250, 336, 0, 0, 0};
+	
+	// 마우스 이벤트용 배열을 담기위한 ArrayList
+	List<SubMenuEventVO> smeVO = new ArrayList<>();
 	
 	/**
 	 * 메인 페이지
 	 */
 	public MainView() {
-		
 		frame = new JFrame();
+		frame.setTitle("대한민국 NO.1 쇼핑몰 Boram닷컴");
 		frame.getContentPane().setBackground(new Color(255, 255, 255));
 		frame.setBackground(new Color(255, 255, 255));
-		frame.setTitle("대한민국 NO.1 쇼핑몰 Boram닷컴");
 		frame.getContentPane().setLayout(null);
         frame.setSize(718, 1064);  // 600,0,418,900
 		frame.setLocationRelativeTo(null);
@@ -73,17 +109,18 @@ public class MainView{
 		
 		
 		// OUTER 메뉴
-		JLabel outer = new JLabel("OUTER");
+		outer = new JLabel("OUTER");
 		outer.setFont(new Font("Bodoni MT Black", Font.PLAIN, 30));
 		outer.setBounds(40, 74, 125, 35); //109
 		subMenu.add(outer);
 		
 
 		// OUTER 서브메뉴
-		JPanel outerSubMenu = new JPanel();
+		outerSubMenu = new JPanel();
 		outerSubMenu.setBounds(40, 124, 116, 121); 
 		outerSubMenu.setLayout(null);
 		outerSubMenu.setVisible(false);
+		subMenu.add(outerSubMenu);
 
 		JLabel coat = new JLabel("코트");
 		coat.setFont(new Font("굴림", Font.BOLD, 18));
@@ -104,7 +141,7 @@ public class MainView{
 		cardigan.setFont(new Font("굴림", Font.BOLD, 18));
 		cardigan.setBounds(0, 93, 62, 21);
 		outerSubMenu.add(cardigan);
-
+		// end OUTER 서브메뉴
 
 
 		
@@ -114,19 +151,17 @@ public class MainView{
 		
 		
 		// TOP 메뉴
-		JLabel top = new JLabel("TOP");
+		top = new JLabel("TOP");
 		top.setFont(new Font("Bodoni MT Black", Font.PLAIN, 30));
 		top.setBounds(40, 124, 91, 35); // 50, 15
 		subMenu.add(top);
 		
-		
 		// TOP 서브메뉴
-		JPanel topSubMenu = new JPanel();
+		topSubMenu = new JPanel();
 		topSubMenu.setLayout(null);
 		topSubMenu.setBounds(40, 174, 133, 147);
 		topSubMenu.setVisible(false);
 		subMenu.add(topSubMenu);
-		
 		
 		JLabel LongSleeve = new JLabel("긴팔");
 		LongSleeve.setFont(new Font("굴림", Font.BOLD, 18));
@@ -152,13 +187,13 @@ public class MainView{
 		overFit.setFont(new Font("굴림", Font.BOLD, 18));
 		overFit.setBounds(0, 124, 62, 21);
 		topSubMenu.add(overFit);
+		// end TOP 서브메뉴
 		
 		
 		
 		
 		
-		
-		JLabel shirt = new JLabel("SHIRT");
+		shirt = new JLabel("SHIRT");
 		shirt.setFont(new Font("Bodoni MT Black", Font.PLAIN, 30));
 		shirt.setBounds(40, 174, 116, 30);
 		subMenu.add(shirt);
@@ -178,7 +213,6 @@ public class MainView{
 		ACC.setBounds(40, 324, 67, 35);
 		subMenu.add(ACC);
 		*/
-		
 		
 		
 		
@@ -278,7 +312,7 @@ public class MainView{
 		
 		
 		
-		subMenu.add(outerSubMenu);
+		
 		frame.getContentPane().add(subMenu);
 		
 		
@@ -421,6 +455,23 @@ public class MainView{
         label_4.setBounds(361, 460, 87, 18);
         mainPage.add(label_4);
         frame.getContentPane().add(mainPage);
+        
+        
+        myPage.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseReleased(MouseEvent e) {}
+			@Override
+			public void mousePressed(MouseEvent e) {}
+			@Override
+			public void mouseExited(MouseEvent e) {}
+			@Override
+			public void mouseEntered(MouseEvent e) {}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				mainPage.setVisible(false);
+				new WB_MyPageView().main(null);
+			}
+		});
         
         
         frame.setVisible(true);
