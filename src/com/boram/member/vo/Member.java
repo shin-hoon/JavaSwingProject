@@ -1,6 +1,13 @@
 package com.boram.member.vo;
 
-public class Member {
+import java.io.Serializable;
+
+public class Member implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2921538305338431959L;
 	
 	private int mNo; // 회원번호
 	private String name;
@@ -11,13 +18,23 @@ public class Member {
 	private String address;
 	private String email;
 	
-	private int grant; // 권한
+	private int grant = 0; // 권한
 
 	public Member() {
 		super();
 	}
-
 	
+	
+	public Member(int mNo, String name, String id, String pwd, int grant) {
+		super();
+		this.mNo = mNo;
+		this.name = name;
+		this.id = id;
+		this.pwd = pwd;
+		this.grant = grant;
+	}
+
+
 	public Member(String name, int birth, String id, String pwd, String phone, String address, String email) {
 		super();
 		this.name = name;

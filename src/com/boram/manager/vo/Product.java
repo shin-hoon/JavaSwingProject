@@ -1,6 +1,14 @@
 package com.boram.manager.vo;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable{
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9085575968485119138L;
 	
 	
 	private int pNo;
@@ -8,8 +16,11 @@ public class Product {
 	private String productName;
 	private int price;
 	private String size;
+	private String explain;
+	
 	private int stock;
 	private int count; //Á¶È¸¼ö
+	
 	
 	
 	
@@ -68,6 +79,16 @@ public class Product {
 	public void setCount(int count) {
 		this.count = count;
 	}
+	public String getExplain() {
+		return explain;
+	}
+	public void setExplain(String explain) {
+		this.explain = explain;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 	@Override
 	public String toString() {
 		return "Product [pNo=" + pNo + ", category=" + category + ", productName=" + productName + ", price=" + price

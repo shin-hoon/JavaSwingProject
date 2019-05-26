@@ -1,6 +1,13 @@
 package com.boram.manager.vo;
 
-public class Order {
+import java.io.Serializable;
+
+public class Order implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7469402397626174143L;
 	
 	private int orderNo;
 	private String orderId;
