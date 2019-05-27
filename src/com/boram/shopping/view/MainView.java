@@ -3,13 +3,11 @@ package com.boram.shopping.view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -20,36 +18,25 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
 import com.boram.myPage.view.WB_MyPageView;
-import com.boram.shopping.vo.SubMenuEventVO;
 
 public class MainView{
 	public static JFrame frame;
 	boolean outerChk = false;
 	boolean topChk = false;
 /*   
-  	 setLocation    menu    menuChk     subMenu
-	    x   y      label[]  boolean[]   panel[] 
-	    0 , 0		outer    false      outerSubMenu
-	   124,250       top     true       topSubMenu
-	   174,336	    shirt    false      shirtSubMenu
-	   	0 , 0	    pants    false      pantsSubMenu
-	   	0 , 0	    shoes    false      shoesSubMenu
-	   	0 , 0	     acc     false      accSubMenu
-*/
+  	 menu          subMenu
+	 label         panel 
+	 outer       outerSubMenu
+	 top         topSubMenu
+	 shirt       shirtSubMenu
+	 pants       pantsSubMenu
+	 shoes       shoesSubMenu
+	 acc         accSubMenu
 	
+ */
 	// 메뉴 
 	JLabel outer, top, shirt, pants, shoes, acc;
 	JPanel outerSubMenu, topSubMenu, shirtSubMenu, pantsSubMenu, shoesSubMenu, accSubMenu;
-	
-	// 마우스 이벤트용 배열
-	JLabel[] menuArr = {outer, top, shirt, pants, shoes, acc};
-	JPanel[] subMenuArr = {outerSubMenu, topSubMenu, shirtSubMenu, pantsSubMenu, shoesSubMenu, accSubMenu};
-	boolean[] menuChkArr = {false, false, false, false, false, false};
-	int[] xArr = {0, 124, 174, 0, 0, 0};
-	int[] yArr = {0, 250, 336, 0, 0, 0};
-	
-	// 마우스 이벤트용 배열을 담기위한 ArrayList
-	List<SubMenuEventVO> smeVO = new ArrayList<>();
 	
 	/**
 	 * 메인 페이지
@@ -78,16 +65,7 @@ public class MainView{
 		subMenu.add(subMenuClose);
 		
 		
-		subMenuClose.addMouseListener(new MouseListener() {
-			@Override
-			public void mouseReleased(MouseEvent e) {}
-			@Override
-			public void mousePressed(MouseEvent e) {}
-			@Override
-			public void mouseExited(MouseEvent e) {}
-			@Override
-			public void mouseEntered(MouseEvent e) {}
-			@Override
+		subMenuClose.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				new Thread() {
 					public void run() {
@@ -118,7 +96,6 @@ public class MainView{
 		outerSubMenu = new JPanel();
 		outerSubMenu.setBounds(40, 124, 116, 121); 
 		outerSubMenu.setLayout(null);
-		outerSubMenu.setVisible(false);
 		subMenu.add(outerSubMenu);
 
 		JLabel coat = new JLabel("코트");
@@ -159,7 +136,6 @@ public class MainView{
 		topSubMenu = new JPanel();
 		topSubMenu.setLayout(null);
 		topSubMenu.setBounds(40, 174, 133, 147);
-		topSubMenu.setVisible(false);
 		subMenu.add(topSubMenu);
 		
 		JLabel LongSleeve = new JLabel("긴팔");
@@ -213,113 +189,6 @@ public class MainView{
 		subMenu.add(ACC);
 		*/
 		
-
-		for(int i = 0; i < menuArr.length; i++) {
-			SubMenuEventVO sme = new SubMenuEventVO();
-			sme.setMenu(menuArr[i]);
-			sme.setSubMenu(subMenuArr[i]);
-			sme.setMenuChk(menuChkArr[i]);
-			sme.setX(xArr[i]);
-			sme.setY(yArr[i]);
-			smeVO.add(sme);
-		}
-		
-		outer.addMouseListener(new MouseListener() {
-			public void mouseReleased(MouseEvent e) {			}
-			public void mousePressed(MouseEvent e) {			}
-			public void mouseExited(MouseEvent e) {			}
-			public void mouseEntered(MouseEvent e) {			}
-			public void mouseClicked(MouseEvent e) {
-				if(outerChk == false) {
-					new Thread() {
-						@Override
-						public void run() {
-							try {
-								for(int i = 124; i <= 250; i++) {
-									top.setLocation(40,i);
-									Thread.sleep(1);
-								}
-							} catch(Exception ex) {
-								
-							}
-						}
-					}.start();
-					outerChk = true;
-					outerSubMenu.setVisible(true);
-				}
-				else {
-					new Thread() {
-						@Override
-						public void run() {
-							try {
-								for(int i = 250; i >= 124; i--) {
-									top.setLocation(40,i);
-									Thread.sleep(1);
-								}
-							} catch(Exception ex) {
-								
-							}
-						}
-					}.start();
-					outerChk = false;
-					outerSubMenu.setVisible(false);
-				}
-			}
-		});
-
-
-		top.addMouseListener(new MouseListener() {
-			public void mouseReleased(MouseEvent e) {			}
-			public void mousePressed(MouseEvent e) {			}
-			public void mouseExited(MouseEvent e) {			}
-			public void mouseEntered(MouseEvent e) {			}
-			public void mouseClicked(MouseEvent e) {
-				if(topChk == false) {
-					new Thread() {
-						@Override
-						public void run() {
-							try {
-								for(int i = 174; i <= 336; i++) {
-									shirt.setLocation(40,i);
-									Thread.sleep(1);
-								}
-							} catch(Exception ex) {
-								System.out.println("top서브메뉴 에러" + ex.getMessage());
-							}
-						}
-					}.start();
-					topChk = true;
-					topSubMenu.setVisible(true);
-				}
-				else {
-					new Thread() {
-						@Override
-						public void run() {
-							try {
-								for(int i = 336; i >= 174; i--) {
-									shirt.setLocation(40,i);
-									Thread.sleep(1);
-								}
-							} catch(Exception ex) {
-								System.out.println("top서브메뉴 에러" + ex.getMessage());
-							}
-						}
-					}.start();
-					topChk = false;
-					topSubMenu.setVisible(false);
-				}
-			}
-		});
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		frame.getContentPane().add(subMenu);
 		
 		
@@ -342,16 +211,7 @@ public class MainView{
 		kategorie.setBounds(30, 12, 55, 57);
 		mainMenu.add(kategorie);
 		
-		kategorie.addMouseListener(new MouseListener() {
-			@Override
-			public void mouseReleased(MouseEvent e) {}
-			@Override
-			public void mousePressed(MouseEvent e) {}
-			@Override
-			public void mouseExited(MouseEvent e) {}
-			@Override
-			public void mouseEntered(MouseEvent e) {}
-			@Override
+		kategorie.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				subMenu.setVisible(true);
 				new Thread() {
@@ -469,15 +329,7 @@ public class MainView{
         frame.getContentPane().add(mainPage);
         
         
-        myPage.addMouseListener(new MouseListener() {
-			@Override
-			public void mouseReleased(MouseEvent e) {}
-			@Override
-			public void mousePressed(MouseEvent e) {}
-			@Override
-			public void mouseExited(MouseEvent e) {}
-			@Override
-			public void mouseEntered(MouseEvent e) {}
+        myPage.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				mainPage.setVisible(false);
