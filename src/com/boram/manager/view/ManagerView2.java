@@ -208,6 +208,10 @@ public class ManagerView2 {
 			}
 		}
 		
+		for (int i = 0; i < result.size(); i++) {
+			System.out.println(keyValue.get(i) + " : " + result.get(i));
+		}
+		
 		
 		
 		
