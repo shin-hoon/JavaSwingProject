@@ -53,6 +53,7 @@ public class MemberView1 {
 		MemberDao md = new MemberDao();
 		ArrayList<Member> mArr = md.fileRead();
 		frmLogin = new JFrame();
+		frmLogin.getContentPane().setBackground(new Color(255, 255, 255));
 		frmLogin.setTitle("LOGIN");
 		frmLogin.setBounds(100, 100, 570, 710);
 		frmLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -97,10 +98,17 @@ public class MemberView1 {
 				String userId = id.getText();
 				String userPwd= pwd.getText();
 				
-				
 				ManagerController2 mc = new ManagerController2();
 				
 				int result = mc.checkLogin(userId, userPwd);
+				
+				if(result == 1) {
+					//로그인 성공
+				}else if(result == 0) {
+					//로그인 실패
+				}else {
+					//관리자 로그인
+				}
 			}
 		});
 		logIn.setBounds(66, 370, 189, 44);
