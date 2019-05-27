@@ -1,17 +1,21 @@
 package com.boram.member.view;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.BorderLayout;
-import javax.swing.SwingConstants;
-import java.awt.Font;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.Color;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
+import com.boram.manager.controller.ManagerController2;
+import com.boram.member.vo.Member;
+import com.boram.member.vo.MemberDao;
 
 public class MemberView1 {
 
@@ -46,6 +50,8 @@ public class MemberView1 {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		MemberDao md = new MemberDao();
+		ArrayList<Member> mArr = md.fileRead();
 		frmLogin = new JFrame();
 		frmLogin.setTitle("LOGIN");
 		frmLogin.setBounds(100, 100, 570, 710);
@@ -77,14 +83,24 @@ public class MemberView1 {
 		PWDLABEL.setBounds(48, 302, 207, 39);
 		frmLogin.getContentPane().add(PWDLABEL);
 		
-		pwd = new JTextField();
+		pwd = new JPasswordField();
 		pwd.setBounds(208, 302, 303, 39);
 		frmLogin.getContentPane().add(pwd);
 		pwd.setColumns(10);
 		
 		JButton logIn = new JButton("\uB85C\uADF8\uC778");
 		logIn.addActionListener(new ActionListener() {
+			
+			@Override
 			public void actionPerformed(ActionEvent e) {
+				// 로그인 버튼 클릭하면
+				String userId = id.getText();
+				String userPwd= pwd.getText();
+				
+				
+				ManagerController2 mc = new ManagerController2();
+				
+				int result = mc.checkLogin(userId, userPwd);
 			}
 		});
 		logIn.setBounds(66, 370, 189, 44);

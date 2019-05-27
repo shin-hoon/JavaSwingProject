@@ -2,16 +2,16 @@ package com.boram.member.controller;
 
 import java.util.ArrayList;
 
-import com.boram.manager.vo.Order;
-import com.boram.manager.vo.Product;
 import com.boram.member.vo.Member;
+import com.boram.member.vo.MemberDao;
 
 public class MemberController {
 
-	private ArrayList<Member> memberList = new ArrayList<>();
-
+	MemberDao md = new MemberDao();
+	ArrayList<Member> memberList = md.fileRead();
+	//md.fileSave(memberList);
 	public void join(String name, int age, String id, String pwd, String phone, String address, String email) {
-
+		
 		memberList.add(new Member(name, age, id, pwd, phone, address, email));
 	}
 
