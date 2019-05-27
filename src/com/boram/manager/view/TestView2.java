@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import java.awt.Color;
 
 public class TestView2 {
 
@@ -41,19 +42,21 @@ public class TestView2 {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setForeground(Color.BLACK);
 		frame.setBounds(100, 100, 770, 706);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		JLabel lblL = new JLabel("\uD68C\uC6D0 \uC815\uBCF4");
+		lblL.setBounds(0, 0, 0, 0);
+		frame.getContentPane().add(lblL);
+		lblL.setFont(new Font("±¼¸²", Font.BOLD, 22));
+		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(119, 123, 534, 403);
+		scrollPane.setBounds(118, 87, 534, 403);
 		frame.getContentPane().add(scrollPane);
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
-		
-		JLabel lblL = new JLabel("\uD68C\uC6D0 \uC815\uBCF4");
-		scrollPane.setColumnHeaderView(lblL);
-		lblL.setFont(new Font("±¼¸²", Font.BOLD, 22));
 	}
 }
