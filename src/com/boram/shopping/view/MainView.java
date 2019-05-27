@@ -42,11 +42,11 @@ public class MainView{
 	JPanel outerSubMenu, topSubMenu, shirtSubMenu, pantsSubMenu, shoesSubMenu, accSubMenu;
 	
 	// 마우스 이벤트용 배열
-	JLabel[] menu = {outer, top, shirt, pants, shoes, acc};
-	JPanel[] subMenu = {outerSubMenu, topSubMenu, shirtSubMenu, pantsSubMenu, shoesSubMenu, accSubMenu};
-	boolean[] menuChk = {false, false, false, false, false, false};
-	int[] x = {0, 124, 174, 0, 0, 0};
-	int[] y = {0, 250, 336, 0, 0, 0};
+	JLabel[] menuArr = {outer, top, shirt, pants, shoes, acc};
+	JPanel[] subMenuArr = {outerSubMenu, topSubMenu, shirtSubMenu, pantsSubMenu, shoesSubMenu, accSubMenu};
+	boolean[] menuChkArr = {false, false, false, false, false, false};
+	int[] xArr = {0, 124, 174, 0, 0, 0};
+	int[] yArr = {0, 250, 336, 0, 0, 0};
 	
 	// 마우스 이벤트용 배열을 담기위한 ArrayList
 	List<SubMenuEventVO> smeVO = new ArrayList<>();
@@ -213,8 +213,16 @@ public class MainView{
 		subMenu.add(ACC);
 		*/
 		
-		
-		
+
+		for(int i = 0; i < menuArr.length; i++) {
+			SubMenuEventVO sme = new SubMenuEventVO();
+			sme.setMenu(menuArr[i]);
+			sme.setSubMenu(subMenuArr[i]);
+			sme.setMenuChk(menuChkArr[i]);
+			sme.setX(xArr[i]);
+			sme.setY(yArr[i]);
+			smeVO.add(sme);
+		}
 		
 		outer.addMouseListener(new MouseListener() {
 			public void mouseReleased(MouseEvent e) {			}
