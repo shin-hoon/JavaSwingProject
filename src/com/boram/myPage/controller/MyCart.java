@@ -146,8 +146,11 @@ public class MyCart extends Product implements Serializable {
 		int result = 0;// 임시변수확인!!
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(result + "MyCart.txt"))) {
 			while (true) {
-				CList = (ArrayList<Product>) ois.readObject();
+//				CList = (ArrayList<Product>) ois.readObject();
+				CList.clear();
+				CList.add((Product)ois.readObject());
 				result = 1;
+			
 			}
 
 		} catch (EOFException e) {
