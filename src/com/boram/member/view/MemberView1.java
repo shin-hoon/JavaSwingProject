@@ -83,6 +83,10 @@ public class MemberView1 {
 		pwd.setColumns(10);
 		
 		JButton logIn = new JButton("\uB85C\uADF8\uC778");
+		logIn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		logIn.setBounds(66, 370, 189, 44);
 		frmLogin.getContentPane().add(logIn);
 		
