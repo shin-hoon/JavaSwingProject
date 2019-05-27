@@ -5,12 +5,11 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -368,20 +367,25 @@ public class MainView{
 		logo.setBounds(118, -2, 201, 79);
 		mainMenu.add(logo);
 		
-		JLabel search = new JLabel(new ImageIcon("C:\\git\\JavaSwingProject\\Image\\MainImage\\search.jpg"));
+		// 파일 경로를 세팅하기 위한 작업
+		File file = new File("FilePathLocation.txt");
+		String path = file.getAbsolutePath();
+		path = path.substring(0, path.lastIndexOf("\\")+1);
+		
+		JLabel search = new JLabel(new ImageIcon(path + "\\Image\\MainImage\\search.jpg"));
 		search.setBounds(583, 26, 30, 28);
 		mainMenu.add(search);
 		
-		JLabel login = new JLabel(new ImageIcon("C:\\git\\JavaSwingProject\\Image\\MainImage\\login.jpg"));
+		JLabel login = new JLabel(new ImageIcon(path + "\\Image\\MainImage\\login.jpg"));
 		login.setBounds(627, 26, 30, 28);
 		mainMenu.add(login);
 		
 		
-		JLabel myPage = new JLabel(new ImageIcon("C:\\git\\JavaSwingProject\\Image\\MainImage\\myPage.jpg"));
+		JLabel myPage = new JLabel(new ImageIcon(path + "\\Image\\MainImage\\myPage.jpg"));
 		myPage.setBounds(667, 26, 30, 28);
 		mainMenu.add(myPage);
 		
-		JLabel adminPage = new JLabel(new ImageIcon("C:\\git\\JavaSwingProject\\Image\\MainImage\\adminPage.jpg"));
+		JLabel adminPage = new JLabel(new ImageIcon(path + "\\Image\\MainImage\\adminPage.jpg"));
 		adminPage.setBounds(540, 26, 30, 28);
 		mainMenu.add(adminPage);
 		
