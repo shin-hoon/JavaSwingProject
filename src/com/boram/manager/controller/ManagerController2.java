@@ -44,14 +44,23 @@ public class ManagerController2 {
 	public ArrayList<Member> searchMember() {
 		return mArr;
 	}
-
+	
+	public ArrayList<Product> searchProduct(){
+		return pArr;
+	}
+	
+	
 	public void insertProduct(int category, String productName, int price, String size, String explain, int stock) {
 
 		int pNo = 1;
-
-		if (pArr.get(0) != null) {
-			pNo = pArr.get(pArr.size() - 1).getpNo() + 1;
+		try {
+			if (pArr != null) {
+				pNo = pArr.get(pArr.size() - 1).getpNo() + 1;
+			}
+		} catch (ArrayIndexOutOfBoundsException e) {
+			pNo = 1;
 		}
+		
 
 		pArr.add(new Product(pNo, category, productName, price, size, stock, 0));
 	}

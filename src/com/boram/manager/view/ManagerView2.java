@@ -9,6 +9,9 @@ import java.util.Scanner;
 import java.util.Set;
 
 import com.boram.manager.controller.ManagerController2;
+import com.boram.manager.vo.OrderDao;
+import com.boram.manager.vo.Product;
+import com.boram.manager.vo.ProductDao;
 import com.boram.member.vo.Member;
 import com.boram.member.vo.MemberDao;
 
@@ -16,7 +19,12 @@ public class ManagerView2 {
 
 	Scanner sc = new Scanner(System.in);
 	ManagerController2 mc = new ManagerController2();
-
+	private MemberDao md = new MemberDao();
+	private ProductDao pd = new ProductDao();
+	private OrderDao od = new OrderDao();
+	
+	
+	
 	public void mainMenu() {
 		System.out.println("=== 로그인 ===");
 		System.out.print("아이디 : ");
@@ -129,9 +137,21 @@ public class ManagerView2 {
 		int stock = sc.nextInt();
 		mc.insertProduct(category, productName, price, size, explain, stock);
 		
+		pd.fileSave(mc.searchProduct());
 		
 	}
 	public void updateProduct() {
+		
+		ArrayList<Product> pArr = mc.searchProduct();
+		if (pArr.size() ==0) {
+			System.out.println("등록된 상품이 없습니다.");
+			return;
+		} else {
+			for (int i = 0; i < pArr.size(); i++) {
+				System.out.println(pArr.get(i));
+			}
+		}
+		
 		
 		System.out.println("수정할 제품번호를 입력하시오");
 		int pNo = sc.nextInt();
@@ -153,7 +173,7 @@ public class ManagerView2 {
 			mc.updateProduct(mc.searchpNo(pNo), num, update);
 			
 		}
-		
+		pd.fileSave(mc.searchProduct());
 	}
 	public void deleteProduct() {
 		System.out.print("삭제할 번호 선택 : ");
@@ -165,7 +185,7 @@ public class ManagerView2 {
 		}else {
 			mc.deleteProduct(result);
 		}
-		
+		pd.fileSave(mc.searchProduct());
 	}
 	public void updateStock() {
 		System.out.println("수정할 제품번호를 입력하시오");
@@ -178,6 +198,7 @@ public class ManagerView2 {
 			int stock = sc.nextInt();
 			mc.updateProduct(result, stock);
 		}
+		pd.fileSave(mc.searchProduct());
 	}
 	public void analysis() {
 		HashMap<Integer, Double> anl =new HashMap<Integer, Double>();
@@ -208,7 +229,7 @@ public class ManagerView2 {
 		ArrayList<Integer> sales = mc.salesState(month, term);
 		
 		for (int i = 0; i < sales.size(); i++) {
-			System.out.println(sdf.format(d) + " 매출액 : " + sales.get(i));
+			System.out.println((Integer.parseInt(sdf.format(d)) - i)+ " 매출액 : " + sales.get(i));
 		}
 		
 	}
