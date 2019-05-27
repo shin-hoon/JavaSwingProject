@@ -1,19 +1,21 @@
 package com.boram.manager.view;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Set;
 
-import com.boram.member.controller.MemberController2;
+import com.boram.manager.controller.ManagerController2;
 import com.boram.member.vo.Member;
 import com.boram.member.vo.MemberDao;
 
 public class ManagerView2 {
 
 	Scanner sc = new Scanner(System.in);
-	MemberController2 mc = new MemberController2();
+	ManagerController2 mc = new ManagerController2();
 
 	public void mainMenu() {
 		System.out.println("=== 로그인 ===");
@@ -180,7 +182,6 @@ public class ManagerView2 {
 	public void analysis() {
 		HashMap<Integer, Double> anl =new HashMap<Integer, Double>();
 		ArrayList<Integer> keyValue = new ArrayList<Integer>();
-		ArrayList<Double> result = new ArrayList<Double>();
 		
 		anl = mc.analysis();
 		
@@ -188,28 +189,9 @@ public class ManagerView2 {
 		Iterator<Integer> itKey = key.iterator();
 		while(itKey.hasNext()) {
 			int value = itKey.next();
-			keyValue.add(value);
-			result.add(anl.get(value));
-		}
-		int temp1 =0;
-		double temp2=0.0;
-		
-		for (int i = 0; i < result.size(); i++) {
-			for (int j = 0; j < i; j++) {
-				if(result.get(i)> result.get(j)) {
-					temp2 = result.get(i);
-					result.set(i, result.get(j));
-					result.set(j, temp2);
-					temp1 = keyValue.get(i);
-					keyValue.set(i, keyValue.get(j));
-					keyValue.set(j, temp1);
-					
-				}
-			}
-		}
-		
-		for (int i = 0; i < result.size(); i++) {
-			System.out.println(keyValue.get(i) + " : " + result.get(i));
+			double result = anl.get(value);
+			
+			System.out.println(value + " : " + result);
 		}
 		
 		
@@ -217,6 +199,17 @@ public class ManagerView2 {
 		
 	}
 	public void salesState() {
+		Date d = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM");
+		int month =Integer.parseInt(sdf.format(d)); 
+		
+		int term = 2;
+		
+		ArrayList<Integer> sales = mc.salesState(month, term);
+		
+		for (int i = 0; i < sales.size(); i++) {
+			System.out.println(sdf.format(d) + " 매출액 : " + sales.get(i));
+		}
 		
 	}
 	

@@ -1,6 +1,8 @@
 package com.boram.manager.vo;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Order implements Serializable {
 	
@@ -16,6 +18,11 @@ public class Order implements Serializable {
 	private int amount; 	//수량
 	private int state; 		// 진행상태, 0이면 결재완료, 1이면 배송중, 2면 배송완료
 	private int payment;	// 결재금액
+	private Date date = new Date();
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+	private int orderDate =Integer.parseInt(sdf.format(date));
+	
+	
 	public Order(int orderNo, String orderId, String address, int productNo, int amount, int state, int payment) {
 		this.orderNo = orderNo;
 		this.orderId = orderId;
@@ -24,6 +31,7 @@ public class Order implements Serializable {
 		this.amount = amount;
 		this.state = state;
 		this.payment = payment;
+		
 	}
 	public Order() {
 		super();
@@ -69,6 +77,13 @@ public class Order implements Serializable {
 	}
 	public void setPayment(int payment) {
 		this.payment = payment;
+	}
+	
+	public int getOrderDate() {
+		return orderDate;
+	}
+	public void setOrderDate(int orderDate) {
+		this.orderDate = orderDate;
 	}
 	@Override
 	public String toString() {
