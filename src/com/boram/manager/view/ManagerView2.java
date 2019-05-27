@@ -1,20 +1,30 @@
 package com.boram.manager.view;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Set;
 
-import com.boram.member.controller.MemberController2;
+import com.boram.manager.controller.ManagerController2;
+import com.boram.manager.vo.OrderDao;
+import com.boram.manager.vo.Product;
+import com.boram.manager.vo.ProductDao;
 import com.boram.member.vo.Member;
 import com.boram.member.vo.MemberDao;
 
 public class ManagerView2 {
 
 	Scanner sc = new Scanner(System.in);
-	MemberController2 mc = new MemberController2();
-
+	ManagerController2 mc = new ManagerController2();
+	private MemberDao md = new MemberDao();
+	private ProductDao pd = new ProductDao();
+	private OrderDao od = new OrderDao();
+	
+	
+	
 	public void mainMenu() {
 		System.out.println("=== 로그인 ===");
 		System.out.print("아이디 : ");
@@ -127,9 +137,21 @@ public class ManagerView2 {
 		int stock = sc.nextInt();
 		mc.insertProduct(category, productName, price, size, explain, stock);
 		
+		pd.fileSave(mc.searchProduct());
 		
 	}
 	public void updateProduct() {
+		
+		ArrayList<Product> pArr = mc.searchProduct();
+		if (pArr.size() ==0) {
+			System.out.println("등록된 상품이 없습니다.");
+			return;
+		} else {
+			for (int i = 0; i < pArr.size(); i++) {
+				System.out.println(pArr.get(i));
+			}
+		}
+		
 		
 		System.out.println("수정할 제품번호를 입력하시오");
 		int pNo = sc.nextInt();
@@ -151,7 +173,7 @@ public class ManagerView2 {
 			mc.updateProduct(mc.searchpNo(pNo), num, update);
 			
 		}
-		
+		pd.fileSave(mc.searchProduct());
 	}
 	public void deleteProduct() {
 		System.out.print("삭제할 번호 선택 : ");
@@ -163,7 +185,7 @@ public class ManagerView2 {
 		}else {
 			mc.deleteProduct(result);
 		}
-		
+		pd.fileSave(mc.searchProduct());
 	}
 	public void updateStock() {
 		System.out.println("수정할 제품번호를 입력하시오");
@@ -176,11 +198,11 @@ public class ManagerView2 {
 			int stock = sc.nextInt();
 			mc.updateProduct(result, stock);
 		}
+		pd.fileSave(mc.searchProduct());
 	}
 	public void analysis() {
 		HashMap<Integer, Double> anl =new HashMap<Integer, Double>();
 		ArrayList<Integer> keyValue = new ArrayList<Integer>();
-		ArrayList<Double> result = new ArrayList<Double>();
 		
 		anl = mc.analysis();
 		
@@ -188,28 +210,9 @@ public class ManagerView2 {
 		Iterator<Integer> itKey = key.iterator();
 		while(itKey.hasNext()) {
 			int value = itKey.next();
-			keyValue.add(value);
-			result.add(anl.get(value));
-		}
-		int temp1 =0;
-		double temp2=0.0;
-		
-		for (int i = 0; i < result.size(); i++) {
-			for (int j = 0; j < i; j++) {
-				if(result.get(i)> result.get(j)) {
-					temp2 = result.get(i);
-					result.set(i, result.get(j));
-					result.set(j, temp2);
-					temp1 = keyValue.get(i);
-					keyValue.set(i, keyValue.get(j));
-					keyValue.set(j, temp1);
-					
-				}
-			}
-		}
-		
-		for (int i = 0; i < result.size(); i++) {
-			System.out.println(keyValue.get(i) + " : " + result.get(i));
+			double result = anl.get(value);
+			
+			System.out.println(value + " : " + result);
 		}
 		
 		
@@ -217,6 +220,17 @@ public class ManagerView2 {
 		
 	}
 	public void salesState() {
+		Date d = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM");
+		int month =Integer.parseInt(sdf.format(d)); 
+		
+		int term = 2;
+		
+		ArrayList<Integer> sales = mc.salesState(month, term);
+		
+		for (int i = 0; i < sales.size(); i++) {
+			System.out.println((Integer.parseInt(sdf.format(d)) - i)+ " 매출액 : " + sales.get(i));
+		}
 		
 	}
 	

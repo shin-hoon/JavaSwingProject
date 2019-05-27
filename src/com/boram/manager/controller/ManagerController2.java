@@ -1,7 +1,9 @@
-package com.boram.member.controller;
+package com.boram.manager.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 import com.boram.manager.vo.Order;
 import com.boram.manager.vo.OrderDao;
@@ -10,7 +12,7 @@ import com.boram.manager.vo.ProductDao;
 import com.boram.member.vo.Member;
 import com.boram.member.vo.MemberDao;
 
-public class MemberController2 {
+public class ManagerController2 {
 
 	private OrderDao od = new OrderDao();
 	private ProductDao pd = new ProductDao();
@@ -42,14 +44,23 @@ public class MemberController2 {
 	public ArrayList<Member> searchMember() {
 		return mArr;
 	}
-
+	
+	public ArrayList<Product> searchProduct(){
+		return pArr;
+	}
+	
+	
 	public void insertProduct(int category, String productName, int price, String size, String explain, int stock) {
 
 		int pNo = 1;
-
-		if (pArr.get(0) != null) {
-			pNo = pArr.get(pArr.size() - 1).getpNo() + 1;
+		try {
+			if (pArr != null) {
+				pNo = pArr.get(pArr.size() - 1).getpNo() + 1;
+			}
+		} catch (ArrayIndexOutOfBoundsException e) {
+			pNo = 1;
 		}
+		
 
 		pArr.add(new Product(pNo, category, productName, price, size, stock, 0));
 	}
@@ -114,11 +125,58 @@ public class MemberController2 {
 			double result = sales/(double)pArr.get(i).getCount();
 			anl.put(pArr.get(i).getpNo(), result);
 		}
+		ArrayList<Integer> keyValue = new ArrayList<Integer>();
+		ArrayList<Double> result = new ArrayList<Double>();
+		Set<Integer> key = anl.keySet();
+		Iterator<Integer> itKey = key.iterator();
+		while(itKey.hasNext()) {
+			int value = itKey.next();
+			keyValue.add(value);
+			result.add(anl.get(value));
+		}
+		int temp1 =0;
+		double temp2=0.0;
+		
+		for (int i = 0; i < result.size(); i++) {
+			for (int j = 0; j < i; j++) {
+				if(result.get(i)> result.get(j)) {
+					temp2 = result.get(i);
+					result.set(i, result.get(j));
+					result.set(j, temp2);
+					temp1 = keyValue.get(i);
+					keyValue.set(i, keyValue.get(j));
+					keyValue.set(j, temp1);
+					
+				}
+			}
+		}
+		for (int i = 0; i < result.size(); i++) {
+			anl.put(keyValue.get(i), result.get(i));
+		}
 		return anl;
 		
 		
 	}
 	
+	
+	public ArrayList<Integer> salesState(int month, int term) {
+		
+		ArrayList<Integer> sumArr = new ArrayList<Integer>();
+		int count;
+		for (int i = term; i > 0; i--) {
+			count=0;
+			for (int j = 0; j < oArr.size(); j++) {
+				if((month/100-i)==oArr.get(j).getOrderDate()/100) {
+					count += oArr.get(j).getPayment();
+				}
+			}
+			sumArr.add(count);
+			
+		}
+		
+		return sumArr;
+		
+	}
 	
 	
 	
