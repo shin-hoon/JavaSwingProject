@@ -1,8 +1,10 @@
 package com.boram.shopping.view;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -14,9 +16,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
+import com.boram.member.view.MemberView1;
 import com.boram.myPage.view.WB_MyPageView;
 
 public class MainView{
@@ -47,13 +52,15 @@ public class MainView{
 		frame.getContentPane().setBackground(new Color(255, 255, 255));
 		frame.setBackground(new Color(255, 255, 255));
 		frame.getContentPane().setLayout(null);
-        frame.setSize(718, 1064);  // 600,0,418,900
+        frame.setSize(718, (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() );
+
+
 		frame.setLocationRelativeTo(null);
         
 		
 		// °íÁ¤ ÆäÀÌÁö(À§ÂÊ, ¼­ºê ¸Þ´º)
 		JPanel subMenu = new JPanel();
-		subMenu.setBounds(0,0,256,682);
+		subMenu.setBounds(0,0,228,1015);
 		subMenu.setLayout(null);
 		subMenu.setVisible(true);
 		
@@ -61,28 +68,8 @@ public class MainView{
 		subMenuClose.setForeground(Color.GRAY);
 		subMenuClose.setFont(new Font("±¼¸²", Font.PLAIN, 35));
 		subMenuClose.setBackground(new Color(255, 255, 255));
-		subMenuClose.setBounds(220, 12, 22, 17);
+		subMenuClose.setBounds(197, 12, 22, 17);
 		subMenu.add(subMenuClose);
-		
-		
-		subMenuClose.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				new Thread() {
-					public void run() {
-						try {
-							for(int i = 0; i >= -376; i--) {
-								subMenu.setLocation(i,0);
-								Thread.sleep(1);
-							}
-						} catch (Exception e) {
-							System.out.println("¼­ºê¸Þ´º ´Ý±â ¿À·ù : "+e.getMessage());
-						}
-					}
-				}.start();
-			}
-		});
-//		subMenu.setVisible(false);
-		
 		
 		
 		// OUTER ¸Þ´º
@@ -129,13 +116,13 @@ public class MainView{
 		// TOP ¸Þ´º
 		top = new JLabel("TOP");
 		top.setFont(new Font("Bodoni MT Black", Font.PLAIN, 30));
-		top.setBounds(40, 124, 91, 35); // 50, 15
+		top.setBounds(40, 250, 91, 35); // 50, 15
 		subMenu.add(top);
 		
 		// TOP ¼­ºê¸Þ´º
 		topSubMenu = new JPanel();
 		topSubMenu.setLayout(null);
-		topSubMenu.setBounds(40, 174, 133, 147);
+		topSubMenu.setBounds(40, 300, 133, 147);
 		subMenu.add(topSubMenu);
 		
 		JLabel LongSleeve = new JLabel("±äÆÈ");
@@ -167,30 +154,147 @@ public class MainView{
 		
 		
 		
-		
+		// SHIRT ¸Þ´º
 		shirt = new JLabel("SHIRT");
 		shirt.setFont(new Font("Bodoni MT Black", Font.PLAIN, 30));
-		shirt.setBounds(40, 174, 116, 30);
+		shirt.setBounds(40, 462, 116, 30); 
 		subMenu.add(shirt);
-		/*
+		
+		// SHIRT ¼­ºê¸Þ´º
+		JPanel shirtSubMenu = new JPanel();
+		shirtSubMenu.setBounds(40, 504, 80, 84);
+		subMenu.add(shirtSubMenu);
+		shirtSubMenu.setLayout(null);
+		
+		JLabel nomalShirt = new JLabel("±âº»¼ÅÃ÷");
+		nomalShirt.setFont(new Font("±¼¸²", Font.BOLD, 18));
+		nomalShirt.setBounds(0, 0, 84, 18);
+		shirtSubMenu.add(nomalShirt);
+		
+		JLabel patternShirt = new JLabel("ÆÐÅÏ¼ÅÃ÷");
+		patternShirt.setFont(new Font("±¼¸²", Font.BOLD, 18));
+		patternShirt.setBounds(0, 31, 84, 18);
+		shirtSubMenu.add(patternShirt);
+		
+		JLabel shortShirt = new JLabel("¹ÝÆÈ¼ÅÃ÷");
+		shortShirt.setFont(new Font("±¼¸²", Font.BOLD, 18));
+		shortShirt.setBounds(0, 62, 84, 18);
+		shirtSubMenu.add(shortShirt);
+		// end SHIRT ¼­ºê¸Þ´º
+		
+		
+		
+		// PANTS ¸Þ´º
 		JLabel PANTS = new JLabel("PANTS");
 		PANTS.setFont(new Font("Bodoni MT Black", Font.PLAIN, 30));
-		PANTS.setBounds(40, 224, 116, 35);
+		PANTS.setBounds(40, 603, 116, 35);
 		subMenu.add(PANTS);
 		
+		// PANTS ¼­ºê¸Þ´º
+		JPanel pantsSubMenu = new JPanel();
+		pantsSubMenu.setBounds(40, 639, 125, 176);
+		subMenu.add(pantsSubMenu);
+		pantsSubMenu.setLayout(null);
+		
+		JLabel Slacks = new JLabel("½½·¢½º");
+		Slacks.setFont(new Font("±¼¸²", Font.BOLD, 18));
+		Slacks.setBounds(0, 0, 62, 18);
+		pantsSubMenu.add(Slacks);
+		
+		JLabel cottonPants = new JLabel("¸éÆÒÃ÷");
+		cottonPants.setFont(new Font("±¼¸²", Font.BOLD, 18));
+		cottonPants.setBounds(0, 31, 62, 18);
+		pantsSubMenu.add(cottonPants);
+		
+		JLabel blueJeans = new JLabel("Ã»¹ÙÁö");
+		blueJeans.setFont(new Font("±¼¸²", Font.BOLD, 18));
+		blueJeans.setBounds(0, 62, 62, 18);
+		pantsSubMenu.add(blueJeans);
+		
+		JLabel shorts = new JLabel("¹Ý¹ÙÁö");
+		shorts.setFont(new Font("±¼¸²", Font.BOLD, 18));
+		shorts.setBounds(0, 93, 62, 18);
+		pantsSubMenu.add(shorts);
+		
+		JLabel training = new JLabel("Æ®·¹ÀÌ´×");
+		training.setFont(new Font("±¼¸²", Font.BOLD, 18));
+		training.setBounds(0, 124, 76, 18);
+		pantsSubMenu.add(training);
+		
+		JLabel upDenimPants = new JLabel("UP µ¥´ÔÆÒÃ÷");
+		upDenimPants.setFont(new Font("±¼¸²", Font.BOLD, 18));
+		upDenimPants.setBounds(0, 155, 111, 18);
+		pantsSubMenu.add(upDenimPants);
+		
+		
+		// SHOES ¸Þ´º
 		JLabel SHOES = new JLabel("SHOES");
 		SHOES.setFont(new Font("Bodoni MT Black", Font.PLAIN, 30));
-		SHOES.setBounds(40, 274, 116, 35);
+		SHOES.setBounds(40, 830, 116, 35);
 		subMenu.add(SHOES);
 		
+		// SHOES ¼­ºê¸Þ´º
+		
+		
+		/*
 		JLabel ACC = new JLabel("ACC");
 		ACC.setFont(new Font("Bodoni MT Black", Font.PLAIN, 30)); // Berlin Sans FB Demi
 		ACC.setBounds(40, 324, 67, 35);
 		subMenu.add(ACC);
 		*/
+		JPanel panel = new JPanel();
+		panel.setBounds(40, 865, 140, 84);
+		subMenu.add(panel);
+		panel.setLayout(null);
 		
-		frame.getContentPane().add(subMenu);
+		JLabel Sneakers = new JLabel("½º´ÏÄ¿Áî");
+		Sneakers.setFont(new Font("±¼¸²", Font.BOLD, 18));
+		Sneakers.setBounds(0, 0, 76, 18);
+		panel.add(Sneakers);
 		
+		JLabel Walker = new JLabel("±¸µÎ/¿öÄ¿");
+		Walker.setFont(new Font("±¼¸²", Font.BOLD, 18));
+		Walker.setBounds(0, 31, 85, 18);
+		panel.add(Walker);
+		
+		JLabel slipper = new JLabel("½½¸®ÆÛ/»÷µé");
+		slipper.setFont(new Font("±¼¸²", Font.BOLD, 18));
+		slipper.setBounds(0, 62, 104, 18);
+		panel.add(slipper);
+		
+		
+		JScrollPane subMenuScroll = new JScrollPane();
+		subMenuScroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		subMenuScroll.getVerticalScrollBar().setUnitIncrement(16);// ½ºÅ©·Ñ ¼Óµµ 
+		subMenuScroll.setBorder(null);
+		subMenuScroll.setBounds(0, 80, 246, 975);
+		subMenuScroll.setVisible(false);
+		subMenu.setPreferredSize(new Dimension(450, 1000));
+		subMenu.setLayout(null);
+		subMenuScroll.setViewportView(subMenu);
+		
+		frame.getContentPane().add(subMenuScroll); 
+//		frame.getContentPane().add(subMenu);
+		
+		
+
+		subMenuClose.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				new Thread() {
+					public void run() {
+						try {
+							for(int i = 0; i >= -376; i--) {
+								subMenu.setLocation(i,0);
+								subMenuScroll.setLocation(i,0);
+								Thread.sleep(1);
+							}
+						} catch (Exception e) {
+							System.out.println("¼­ºê¸Þ´º ´Ý±â ¿À·ù : "+e.getMessage());
+						}
+					}
+				}.start();
+			}
+		});
 		
 		//////////////////////////////////////////////////////
 		//////////////////////////////////////////////////////
@@ -213,12 +317,14 @@ public class MainView{
 		
 		kategorie.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
+				subMenuScroll.setVisible(true);
 				subMenu.setVisible(true);
 				new Thread() {
 					public void run() {
 						try {
 							for(int i = -376; i <= 0; i++) {
 								subMenu.setLocation(i,0);
+								subMenuScroll.setLocation(i,0);
 								Thread.sleep(1);
 							}
 						} catch (Exception e) {
@@ -280,11 +386,9 @@ public class MainView{
 		mainPage.setBounds(0, 259, 700, 490);
 		mainPage.setLayout(null);
 		mainPage.setVisible(true);
-	/*	
-		JScrollPane scroll = new JScrollPane(mainMenu);
-		mainMenu.setPreferredSize(new Dimension(318,5200));		
-		add(scroll);
-	*/	
+		
+		
+		
 		Image image = null;
 		Image image2 = null;
 		
@@ -326,9 +430,17 @@ public class MainView{
         label_4.setFont(new Font("ÈÞ¸Õ¿¢½ºÆ÷", Font.PLAIN, 15));
         label_4.setBounds(361, 460, 87, 18);
         mainPage.add(label_4);
-        frame.getContentPane().add(mainPage);
+       
         
         
+        login.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		mainPage.setVisible(false);
+        		new MemberView1().main(null);;
+        	}
+        	
+		});
         myPage.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -337,9 +449,24 @@ public class MainView{
 			}
 		});
         
-        
-        frame.setVisible(true);
-        frame.setResizable(true);
+    /*    JScrollPane scroll = new JScrollPane(mainPage);
+        mainPage.setPreferredSize(new Dimension(318,5200));		
+		frame.add(scroll);
+	*/
+
+		JScrollPane mainPageScroll = new JScrollPane();
+		mainPageScroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		mainPageScroll.getVerticalScrollBar().setUnitIncrement(16);// ½ºÅ©·Ñ ¼Óµµ 
+		mainPageScroll.setBorder(null);
+		mainPageScroll.setBounds(0, 80, 700, 975);
+
+		mainPage.setPreferredSize(new Dimension(450, 1000));
+		mainPage.setLayout(null);
+		mainPageScroll.setViewportView(mainPage);
+		
+		frame.getContentPane().add(mainPageScroll); 
+		frame.setVisible(true);
+		frame.setResizable(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }
