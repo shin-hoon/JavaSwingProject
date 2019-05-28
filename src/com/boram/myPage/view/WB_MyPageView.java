@@ -47,20 +47,25 @@ public class WB_MyPageView extends JFrame {
 		getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		panel.setForeground(Color.WHITE);
 		panel.setBounds(0, 0, FWID, 90);
 		getContentPane().add(panel);
 
-		JLabel lblMyCart = new JLabel("My Cart");
+		JLabel lblMyCart = new JLabel("My Page");
+		lblMyCart.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMyCart.setFont(new Font("Segoe Script", Font.ITALIC, 50));
 		panel.add(lblMyCart);
 
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.DARK_GRAY);
 		panel_2.setBounds(0, 91, 718, 370);
 
 		getContentPane().add(panel_2);
 		panel_2.setLayout(null);
 
 		JLabel label = new JLabel("idChange : ");
-		label.setBounds(12, 36, 82, 15);
+		label.setBounds(12, 36, 80, 15);
 		panel_2.add(label);
 
 		JLabel label_0 = new JLabel("pwChange : ");
@@ -85,38 +90,38 @@ public class WB_MyPageView extends JFrame {
 
 		// id
 		textField = new JTextField();
-		textField.setBounds(111, 33, 116, 21);
+		textField.setBounds(114, 36, 116, 21);
 		panel_2.add(textField);
 		textField.setColumns(10);
 
 		// pw
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(104, 69, 116, 21);
+		textField_1.setBounds(114, 72, 116, 21);
 		panel_2.add(textField_1);
 
 		// age
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(114, 99, 116, 21);
+		textField_2.setBounds(114, 102, 116, 21);
 		panel_2.add(textField_2);
 
 		// address
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
-		textField_3.setBounds(111, 129, 116, 21);
+		textField_3.setBounds(114, 132, 116, 21);
 		panel_2.add(textField_3);
 
 		// email
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
-		textField_4.setBounds(111, 159, 116, 21);
+		textField_4.setBounds(114, 162, 116, 21);
 		panel_2.add(textField_4);
 
 		// phone
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
-		textField_5.setBounds(111, 199, 116, 21);
+		textField_5.setBounds(114, 192, 116, 21);
 		panel_2.add(textField_5);
 
 		JButton btnChange = new JButton("Change!");
