@@ -7,7 +7,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.boram.shopping.view.MainView;
 
-public class WB_MyPage_Main extends JFrame {
+public class WB_MyPage_Main {
 
 	private JPanel contentPane;
 
@@ -20,7 +20,7 @@ public class WB_MyPage_Main extends JFrame {
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+//		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		contentPane.setVisible(true);

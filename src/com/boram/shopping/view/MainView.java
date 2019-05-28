@@ -121,7 +121,7 @@ public class MainView{
         	@Override
         	public void mouseClicked(MouseEvent e) {
         		mainPage.setVisible(false);
-        		new MemberView1().main(null);;
+        		new MemberView1();
         	}
         	
 		});
