@@ -23,13 +23,12 @@ public class WB_MyPage_Main extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(78, 44, 241, 165);
-		contentPane.add(panel);
+		contentPane.setVisible(true);
 		
 		JButton btnNewButton = new JButton("New button");
-		panel.add(btnNewButton);
+		btnNewButton.setBounds(154, 214, 105, 27);
+		contentPane.add(btnNewButton);
 		
-		MainView.frame.add(contentPane);
+		MainView.frame.getContentPane().add(contentPane);
 	}
 }

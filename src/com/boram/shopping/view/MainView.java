@@ -22,7 +22,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
 import com.boram.member.view.MemberView1;
-import com.boram.myPage.view.WB_MyPageView;
+import com.boram.myPage.view.WB_MyPage_Main;
 import com.boram.shopping.controller.MainMouseEvent;
 
 public class MainView{
@@ -129,9 +129,10 @@ public class MainView{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				mainPage.setVisible(false);
-				new WB_MyPageView().main(null);
+				new WB_MyPage_Main();
 			}
 		});
+        
         
 
 		
