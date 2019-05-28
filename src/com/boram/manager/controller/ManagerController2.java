@@ -115,12 +115,17 @@ public class ManagerController2 {
 	public HashMap<Integer, Double> analysis(){
 		HashMap<Integer, Double> anl = new HashMap<Integer, Double>();
 		int sales;
+		
 		for (int i = 0; i < pArr.size(); i++) {
 			sales=0;
+			ArrayList<Integer> pNo = oArr.get(i).getpNo();
 			for (int j = 0; j < oArr.size(); j++) {
-				if(pArr.get(i).getpNo() == oArr.get(j).getProductNo()) {
-					sales += oArr.get(j).getAmount();
+				for (int j2 = 0; j2 < pNo.size(); j2++) {
+					if(pArr.get(i).getpNo() == oArr.get(j).getpNo().get(j2)) {
+						sales += oArr.get(j).getAmount().get(j2);
+					}
 				}
+				
 			}
 			double result = sales/(double)pArr.get(i).getCount();
 			anl.put(pArr.get(i).getpNo(), result);
