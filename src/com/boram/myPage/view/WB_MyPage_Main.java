@@ -12,18 +12,27 @@ import java.awt.event.ActionListener;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 
+<<<<<<< HEAD
 public class WB_MyPage_Main extends JFrame {
 	public static final int FWID = 718;
 	public static final int FHIT = 500;
 	
+=======
+public class WB_MyPage_Main {
+
+>>>>>>> branch 'master' of https://github.com/shin-hoon/JavaSwingProject
 	private JPanel contentPane;
 
 	public WB_MyPage_Main() {
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+<<<<<<< HEAD
 		contentPane.setBounds(0,0,FWID,FHIT);
 		setContentPane(contentPane);
+=======
+//		setContentPane(contentPane);
+>>>>>>> branch 'master' of https://github.com/shin-hoon/JavaSwingProject
 		contentPane.setLayout(null);
 		contentPane.setVisible(true);
 		
