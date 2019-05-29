@@ -462,7 +462,7 @@ public class MainView{
 			public void mouseClicked(MouseEvent e) {
 				setMainPage(new WB_MyPage_Main().myPageMain());
 			}
-		});
+		});           
 
 	}
 	
